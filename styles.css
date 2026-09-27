@@ -569,7 +569,7 @@ h3 {
 }
 
 .recent-publications-heading h2 {
-  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
   line-height: 1.08;
 }
 
@@ -866,18 +866,25 @@ h3 {
 
 @media (max-width: 640px) {
   .site-header {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
     margin-top: 10px;
+    gap: 10px;
+    padding: 12px;
   }
 
   .nav {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 6px;
   }
 
   .nav a {
-    padding-left: 8px;
-    padding-right: 8px;
+    min-height: 38px;
+    padding: 8px 6px;
+    text-align: center;
+    font-size: 0.86rem;
   }
 
   main,
@@ -892,33 +899,93 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-bottom: 48px;
+    padding-top: 34px;
+    padding-bottom: 42px;
   }
 
   .mobile-title-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 82px;
-    gap: 16px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
     margin-bottom: 20px;
   }
 
   .name-title {
     margin-bottom: 0;
-    font-size: clamp(1.85rem, 10vw, 2.75rem);
+    font-size: clamp(1.95rem, 10vw, 2.85rem);
   }
 
   .mobile-face {
     display: block;
-    width: 82px;
-    height: 82px;
+    order: -1;
+    width: 118px;
+    height: 118px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 10px 28px rgba(25, 25, 25, 0.13);
   }
 
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(5, 44px);
+    gap: 8px;
+    justify-content: start;
+    margin-top: 22px;
+  }
+
+  .hero-actions .button {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+    font-size: 0;
+    gap: 0;
+  }
+
+  .hero-actions .button-favicon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hero-actions .button-envelope {
+    width: 20px;
+    height: 15px;
+  }
+
   .portrait-frame {
     display: none;
+  }
+
+  .page-intro {
+    align-items: flex-start;
+    padding-top: 36px;
+  }
+
+  .publication-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .recent-publications {
+    padding-top: 18px;
+  }
+
+  .recent-publications-heading {
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .recent-publications-heading h2 {
+    font-size: clamp(1.7rem, 7vw, 2.05rem);
   }
 
   .publication-grid {
@@ -927,6 +994,30 @@ h3 {
 
   .recent-publication-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .recent-publication-card {
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .recent-publication-media {
+    grid-row: 1 / span 2;
+    aspect-ratio: auto;
+    min-height: 112px;
+  }
+
+  .recent-publication-card p {
+    margin: 10px 10px 4px;
+    font-size: 0.68rem;
+  }
+
+  .recent-publication-card h3 {
+    padding: 0 10px 10px;
+    font-size: 0.82rem;
+    line-height: 1.18;
   }
 
   .paper-card {
@@ -960,7 +1051,27 @@ h3 {
   }
 
   .director-grid {
-    grid-template-columns: minmax(150px, 190px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .director-card {
+    max-width: none;
+  }
+
+  .person-card {
+    padding: 12px;
+  }
+
+  .person-photo {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 10px;
+  }
+
+  .person-card h3 {
+    font-size: 0.9rem;
+    line-height: 1.18;
   }
 
   .student-grid {
