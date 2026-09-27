@@ -58,6 +58,17 @@
         </figure>
       </section>
 
+      <section class="section recent-publications" aria-labelledby="recent-publications-title">
+        <div class="section-heading recent-publications-heading">
+          <div>
+            <p class="eyebrow">Recent Publications</p>
+            <h2 id="recent-publications-title">Selected recent work</h2>
+          </div>
+          <a class="button" href="publications.html">View All Publications</a>
+        </div>
+        <div class="recent-publication-grid" id="home-publications" aria-label="Selected recent publications"></div>
+      </section>
+
     </main>
 
     <footer class="footer">
@@ -65,5 +76,64 @@
       <span>School of Computer Science, Tel Aviv University</span>
     </footer>
 
+    <script src="publications-data.js"></script>
+    <script>
+      const homePublicationGrid = document.getElementById("home-publications");
+      const homeVenueOrderByYear = {
+        2026: ["arXiv", "NeurIPS", "ECCV", "ICML Workshop", "SIGGRAPH", "CVPR", "ICLR"],
+        2025: ["SIGGRAPH Asia", "ICCV Workshop", "SIGGRAPH", "CVPR", "3DV"],
+        2024: ["SIGGRAPH Asia", "ECCV", "SIGGRAPH", "CVPR", "ICLR"],
+        2023: ["ICCV", "CVPR", "ICLR"],
+        2022: ["arXiv", "ECCV Workshop", "EUROGRAPHICS", "SIGGRAPH", "ACM TOG"],
+        2021: ["ICCV", "SIGGRAPH", "CVPR"],
+        2020: ["Computational Visual Media"]
+      };
+      const homePublicationYear = (venue) => {
+        const match = venue.match(/\b(20\d{2})\b/);
+        return match ? Number(match[1]) : 0;
+      };
+      const homeVenueRank = (venue) => {
+        const order = homeVenueOrderByYear[homePublicationYear(venue)] || [];
+        const index = order.findIndex((name) => venue.startsWith(name));
+        return index === -1 ? order.length : index;
+      };
+      const homeComparePublications = (a, b) =>
+        homePublicationYear(b.venue) - homePublicationYear(a.venue) || homeVenueRank(a.venue) - homeVenueRank(b.venue);
+      const homeEscape = (value = "") =>
+        String(value).replace(/[&<>'"]/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;"
+        })[character]);
+
+      if (homePublicationGrid) {
+        const acceptedPreprints = preprints.filter(({kind}) => kind !== "preprint");
+        const homepagePaperTitles = [
+          "Token-to-Token Alignment of Text Embeddings for Semantic Blending",
+          "ParetoSlider: Diffusion Models Post-Training for Continuous Reward Control",
+          "Semantic Browsing: Controllable Diversity for Image Generation",
+          "Tuning-free Visual Effect Transfer across Videos",
+          "Continuous Control of Editing Models via Adaptive-Origin Guidance"
+        ];
+        const allHomepagePublications = [...acceptedPreprints, ...publications];
+        const selectedPublications = homepagePaperTitles
+          .map((paperTitle) => allHomepagePublications.find(({title}) => title === paperTitle))
+          .filter(Boolean);
+
+        homePublicationGrid.innerHTML = selectedPublications.map(({title, venue, image, video, paper, page}) => `
+          <article class="recent-publication-card">
+            <a class="recent-publication-media" href="${homeEscape(page || paper || "publications.html")}" target="_blank" rel="noopener" aria-label="${homeEscape(title)}">
+              ${video
+                ? `<video src="assets/img/${homeEscape(video)}" poster="assets/img/${homeEscape(image)}" muted autoplay loop playsinline></video>`
+                : `<img src="assets/img/${homeEscape(image)}" alt="" loading="lazy">`}
+            </a>
+            <p>${homeEscape(venue)}</p>
+            <h3><a href="${homeEscape(page || paper || "publications.html")}" target="_blank" rel="noopener">${homeEscape(title)}</a></h3>
+          </article>
+        `).join("");
+      }
+    </script>
   </body>
 </html>
