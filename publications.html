@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Publications | Or Patashnik</title>
+    <meta name="description" content="Publications by Or Patashnik.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Or Patashnik home">Or Patashnik</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">About</a>
+        <a href="publications.html" aria-current="page">Publications</a>
+        <a href="lab.html">Lab</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-intro" aria-labelledby="publications-title">
+        <h1 id="publications-title" class="page-title">Publications</h1>
+        <div class="publication-controls">
+          <label class="search-box">
+            <span>Search</span>
+            <input type="search" id="publication-search" placeholder="Title, author, conference">
+          </label>
+          <label class="preprint-toggle">
+            <input type="checkbox" id="preprint-toggle">
+            <span>Show preprints</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="section compact-section" aria-label="Publication list">
+        <div class="publication-grid" id="publication-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Or Patashnik</span>
+      <span>School of Computer Science, Tel Aviv University</span>
+    </footer>
+
+    <script src="publications-data.js"></script>
+    <script>
+      const grid = document.getElementById("publication-grid");
+      const preprintToggle = document.getElementById("preprint-toggle");
+      const publicationSearch = document.getElementById("publication-search");
+      const highlightAuthor = (authorMarkup) =>
+        authorMarkup.replaceAll("Or Patashnik", '<span class="me-author">Or Patashnik</span>');
+      const venueOrderByYear = {
+        2026: ["arXiv", "NeurIPS", "ECCV", "ICML Workshop", "SIGGRAPH", "CVPR", "ICLR"],
+        2025: ["SIGGRAPH Asia", "ICCV Workshop", "SIGGRAPH", "CVPR", "3DV"],
+        2024: ["SIGGRAPH Asia", "ECCV", "SIGGRAPH", "CVPR", "ICLR"],
+        2023: ["ICCV", "CVPR", "ICLR"],
+        2022: ["arXiv", "ECCV Workshop", "EUROGRAPHICS", "SIGGRAPH", "ACM TOG"],
+        2021: ["ICCV", "SIGGRAPH", "CVPR"],
+        2020: ["Computational Visual Media"]
+      };
+      const publicationYear = (venue) => {
+        const match = venue.match(/\b(20\d{2})\b/);
+        return match ? Number(match[1]) : 0;
+      };
+      const venueRank = (venue) => {
+        const order = venueOrderByYear[publicationYear(venue)] || [];
+        const index = order.findIndex((name) => venue.startsWith(name));
+        return index === -1 ? order.length : index;
+      };
+      const comparePublications = (a, b) =>
+        publicationYear(b.venue) - publicationYear(a.venue) || venueRank(a.venue) - venueRank(b.venue);
+      const acceptedPreprints = preprints.filter(({kind}) => kind !== "preprint");
+      const sortedPublications = [...acceptedPreprints, ...publications].sort(comparePublications);
+
+      function renderPublications() {
+        const query = publicationSearch.value.trim().toLowerCase();
+        const items = preprintToggle.checked
+          ? [...preprints, ...publications].sort(comparePublications)
+          : sortedPublications;
+        const filteredItems = query
+          ? items.filter(({title, authors, venue}) =>
+              `${title} ${authors} ${venue}`.toLowerCase().includes(query)
+            )
+          : items;
+        grid.innerHTML = filteredItems.map(({title, authors, authorsHtml, venue, image, video, paper, page, kind}) => `
+          <article class="paper-card ${kind === "preprint" ? "is-preprint" : ""}">
+            <a class="paper-media" href="${page || paper}" target="_blank" rel="noopener" aria-label="${title}">
+              ${video
+                ? `<video src="assets/img/${video}" poster="assets/img/${image}" muted autoplay loop playsinline></video>`
+                : `<img src="assets/img/${image}" alt="">`}
+            </a>
+            <div class="paper-body">
+              ${venue ? `<p class="venue">${venue}</p>` : ""}
+              <h3>${title}</h3>
+              <p class="authors">${highlightAuthor(authorsHtml || authors)}</p>
+              <div class="paper-links">
+                ${paper ? `<a href="${paper}" target="_blank" rel="noopener">Paper</a>` : ""}
+                ${page ? `<a href="${page}" target="_blank" rel="noopener">Page</a>` : ""}
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      preprintToggle.addEventListener("change", renderPublications);
+      publicationSearch.addEventListener("input", renderPublications);
+      renderPublications();
+    </script>
+  </body>
+</html>
