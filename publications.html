@@ -68,6 +68,7 @@
         return index === -1 ? order.length : index;
       };
       const comparePublications = (a, b) =>
+        Number(b.kind === "preprint") - Number(a.kind === "preprint") ||
         publicationYear(b.venue) - publicationYear(a.venue) || venueRank(a.venue) - venueRank(b.venue);
       const acceptedPreprints = preprints.filter(({kind}) => kind !== "preprint");
       const sortedPublications = [...acceptedPreprints, ...publications].sort(comparePublications);
