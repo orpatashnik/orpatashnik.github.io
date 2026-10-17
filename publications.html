@@ -67,8 +67,11 @@
         const index = order.findIndex((name) => venue.startsWith(name));
         return index === -1 ? order.length : index;
       };
+      const currentYear = new Date().getFullYear();
+      const isCurrentYearPreprint = ({kind, venue}) =>
+        kind === "preprint" && publicationYear(venue) === currentYear;
       const comparePublications = (a, b) =>
-        Number(b.kind === "preprint") - Number(a.kind === "preprint") ||
+        Number(isCurrentYearPreprint(b)) - Number(isCurrentYearPreprint(a)) ||
         publicationYear(b.venue) - publicationYear(a.venue) || venueRank(a.venue) - venueRank(b.venue);
       const acceptedPreprints = preprints.filter(({kind}) => kind !== "preprint");
       const sortedPublications = [...acceptedPreprints, ...publications].sort(comparePublications);
