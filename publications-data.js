@@ -496,7 +496,8 @@ const preprints = [
     "authors": "Sara Dorfman*, Nir Goren*, Gal Barak*, Daniel Cohen-Or, Or Patashnik",
     "authorsHtml": "<a href=\"https://scholar.google.com/citations?user=QWY7OskAAAAJ\" target=\"_blank\" rel=\"noopener\">Sara Dorfman*</a>, <a href=\"https://nirgoren.github.io/\" target=\"_blank\" rel=\"noopener\">Nir Goren*</a>, Gal Barak*, <a href=\"https://danielcohenor.com/\" target=\"_blank\" rel=\"noopener\">Daniel Cohen-Or</a>, Or Patashnik",
     "venue": "arXiv, 2026",
-    "image": "acedit.webp",
+    "image": "acedit-poster.jpg",
+    "video": "acedit.mp4",
     "paper": "https://arxiv.org/abs/2610.22328",
     "page": "https://saradorfman1.github.io/ACEdit/",
     "kind": "preprint"
