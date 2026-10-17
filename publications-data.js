@@ -132,7 +132,7 @@ const publications = [
   {
     "title": "VLM-Guided Adaptive Negative Prompting for Creative Generation",
     "authors": "Shelly Golan, Yotam Nitzan, Zongze Wu, Or Patashnik",
-    "authorsHtml": "<a href=\"https://scholar.google.com/citations?user=_MHRaNIAAAAJ&amp;hl=iw&amp;oi=ao\" target=\"_blank\" rel=\"noopener\">Shelly Golan</a>, <a href=\"https://yotamnitzan.github.io/\" target=\"_blank\" rel=\"noopener\">Yotam Nitzan</a>, <a href=\"https://betterze.github.io/website/\" target=\"_blank\" rel=\"noopener\">Zongze Wu</a>, Or Patashnik",
+    "authorsHtml": "<a href=\"https://shelley-golan.github.io/\" target=\"_blank\" rel=\"noopener\">Shelly Golan</a>, <a href=\"https://yotamnitzan.github.io/\" target=\"_blank\" rel=\"noopener\">Yotam Nitzan</a>, <a href=\"https://betterze.github.io/website/\" target=\"_blank\" rel=\"noopener\">Zongze Wu</a>, Or Patashnik",
     "venue": "ICLR, 2026",
     "image": "vlm-creative.jpeg",
     "paper": "https://arxiv.org/abs/2510.10715",
