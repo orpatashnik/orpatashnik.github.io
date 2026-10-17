@@ -492,14 +492,34 @@ const publications = [
 ];
 const preprints = [
   {
+    "title": "Learning to Read the Contextual Tokens in Diffusion Transformers",
+    "authors": "Omer Dahary*, Etai Sella*, Hadar Averbuch-Elor, Daniel Cohen-Or, Or Patashnik",
+    "authorsHtml": "<a href=\"https://omer11a.github.io/\" target=\"_blank\" rel=\"noopener\">Omer Dahary*</a>, <a href=\"https://etaisella.github.io/\" target=\"_blank\" rel=\"noopener\">Etai Sella*</a>, <a href=\"https://www.cs.cornell.edu/~hadarelor/\" target=\"_blank\" rel=\"noopener\">Hadar Averbuch-Elor</a>, <a href=\"https://danielcohenor.com/\" target=\"_blank\" rel=\"noopener\">Daniel Cohen-Or</a>, Or Patashnik",
+    "venue": "arXiv, 2026",
+    "image": "learning_to_read.jpg",
+    "paper": "https://arxiv.org/abs/2610.06844",
+    "page": "https://omer11a.github.io/learning_to_read/",
+    "kind": "preprint"
+  },
+  {
+    "title": "ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning",
+    "authors": "Sara Dorfman*, Nir Goren*, Gal Barak*, Daniel Cohen-Or, Or Patashnik",
+    "authorsHtml": "<a href=\"https://scholar.google.com/citations?user=QWY7OskAAAAJ\" target=\"_blank\" rel=\"noopener\">Sara Dorfman*</a>, <a href=\"https://nirgoren.github.io/\" target=\"_blank\" rel=\"noopener\">Nir Goren*</a>, Gal Barak*, <a href=\"https://danielcohenor.com/\" target=\"_blank\" rel=\"noopener\">Daniel Cohen-Or</a>, Or Patashnik",
+    "venue": "arXiv, 2026",
+    "image": "acedit.webp",
+    "paper": "https://arxiv.org/abs/2610.22328",
+    "page": "https://saradorfman1.github.io/ACEdit/",
+    "kind": "preprint"
+  },
+  {
     "title": "Latent-Identity Tuning in Text-to-Image Personalization Models",
     "authors": "Daniel Garibi, Ronen Kamenetsky, Hadar Averbuch-Elor, Daniel Cohen-Or, Or Patashnik",
     "authorsHtml": "<a href=\"https://garibida.github.io/danielgaribi/\" target=\"_blank\" rel=\"noopener\">Daniel Garibi</a>, <a href=\"https://scholar.google.com/citations?hl=en&amp;user=GGcb3ksAAAAJ\" target=\"_blank\" rel=\"noopener\">Ronen Kamenetsky</a>, <a href=\"https://www.hadarelor.com/\" target=\"_blank\" rel=\"noopener\">Hadar Averbuch-Elor</a>, <a href=\"https://danielcohenor.com/\" target=\"_blank\" rel=\"noopener\">Daniel Cohen-Or</a>, Or Patashnik",
-    "venue": "arXiv, 2026",
+    "venue": "WACV, 2027",
     "image": "latent_identity.jpg",
     "paper": "https://arxiv.org/abs/2607.11885",
     "page": "https://garibida.github.io/IdentityTuning/",
-    "kind": "preprint"
+    "kind": "publication"
   },
   {
     "title": "Keep The Essentials: Efficient Reference Conditioned Generation via Token Dropping",

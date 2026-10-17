@@ -109,13 +109,13 @@
       if (homePublicationGrid) {
         const acceptedPreprints = preprints.filter(({kind}) => kind !== "preprint");
         const homepagePaperTitles = [
+          "Learning to Read the Contextual Tokens in Diffusion Transformers",
+          "ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning",
           "Token-to-Token Alignment of Text Embeddings for Semantic Blending",
           "ParetoSlider: Diffusion Models Post-Training for Continuous Reward Control",
-          "Semantic Browsing: Controllable Diversity for Image Generation",
-          "Tuning-free Visual Effect Transfer across Videos",
-          "Continuous Control of Editing Models via Adaptive-Origin Guidance"
+          "Semantic Browsing: Controllable Diversity for Image Generation"
         ];
-        const allHomepagePublications = [...acceptedPreprints, ...publications];
+        const allHomepagePublications = [...preprints, ...publications];
         const selectedPublications = homepagePaperTitles
           .map((paperTitle) => allHomepagePublications.find(({title}) => title === paperTitle))
           .filter(Boolean);
