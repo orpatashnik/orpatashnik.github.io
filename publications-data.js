@@ -492,6 +492,16 @@ const publications = [
 ];
 const preprints = [
   {
+    "title": "Stuck on Shuffle: On Attribute-Object Binding in Vision-Language Models",
+    "authors": "Netanel Y. Tamir, Michael Green, Issar Tzachor, Or Shimshi, Dvir Samuel, Or Patashnik, Rami Ben-Ari",
+    "authorsHtml": "<a href=\"https://netanel-tamir.github.io/\" target=\"_blank\" rel=\"noopener\">Netanel Y. Tamir</a>, <a href=\"https://www.linkedin.com/in/michael-green-0631b051/\" target=\"_blank\" rel=\"noopener\">Michael Green</a>, <a href=\"https://www.linkedin.com/in/issar-tzachor/\" target=\"_blank\" rel=\"noopener\">Issar Tzachor</a>, <a href=\"https://www.linkedin.com/in/or-shimshi-6a9a34/\" target=\"_blank\" rel=\"noopener\">Or Shimshi</a>, <a href=\"https://dvirsamuel.github.io/\" target=\"_blank\" rel=\"noopener\">Dvir Samuel</a>, Or Patashnik, <a href=\"https://www.benarirami.com/\" target=\"_blank\" rel=\"noopener\">Rami Ben-Ari</a>",
+    "venue": "arXiv, 2026",
+    "image": "stuck-on-shuffle.jpg",
+    "paper": "https://arxiv.org/abs/2610.22602",
+    "page": "https://stuck-on-shuffle.github.io/",
+    "kind": "preprint"
+  },
+  {
     "title": "ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning",
     "authors": "Sara Dorfman*, Nir Goren*, Gal Barak*, Daniel Cohen-Or, Or Patashnik",
     "authorsHtml": "<a href=\"https://scholar.google.com/citations?user=QWY7OskAAAAJ\" target=\"_blank\" rel=\"noopener\">Sara Dorfman*</a>, <a href=\"https://nirgoren.github.io/\" target=\"_blank\" rel=\"noopener\">Nir Goren*</a>, Gal Barak*, <a href=\"https://danielcohenor.com/\" target=\"_blank\" rel=\"noopener\">Daniel Cohen-Or</a>, Or Patashnik",
